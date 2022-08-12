@@ -273,7 +273,7 @@ List<List<num>> toListListNum(List _inputListOfList,
 /// A class for representing two-dimensional Polygon defined with `List<Point<num>> points`.
 class Polygon {
   final List<Point<num>> points;
-  String name;
+  String? name;
   // double version;
 
   ///Create a `Polygon` with vertices at `points`.
@@ -343,9 +343,9 @@ class Polygon {
       return true;
     } else {
       double dis = 0, dd = 0;
-      dis = distanceInMeter(i.x, i.y, points[0].x, points[0].y);
+      dis = distanceInMeter(i.x as double, i.y as double, points[0].x as double, points[0].y as double);
       for (int j = 1; j < points.length; j++) {
-        dd = distanceInMeter(i.x, i.y, points[j].x, points[j].y);
+        dd = distanceInMeter(i.x as double, i.y as double, points[j].x as double, points[j].y as double);
         dis = dd < dis ? dd : dis;
       }
       return dis > T ? false : true;
@@ -428,18 +428,18 @@ class Polygon {
   ///    * Different name than Default name(`isInside`) will be used by passing optional parameter: `diffNameThanIsInside`
   String IsInsideResultWithXY_ToCSVString(List<Point<num>> inputListOfPoint,
       {bool includeHeader = true,
-      String diffNameThanIsInside,
+      String? diffNameThanIsInside,
       bool useXY = false}) {
     List<List> xYOut = [];
     if (includeHeader) {
       String headerX = useXY ? "x" : "latitude";
       String headerY = useXY ? "y" : "longitude";
       // TODO - Remove three quotation marks """Example Name_with_space""" when '"x"' is used, instead of "x"
-      diffNameThanIsInside = containsSpace(diffNameThanIsInside)
+      diffNameThanIsInside = containsSpace(diffNameThanIsInside!)
           ? '${diffNameThanIsInside}'
           : diffNameThanIsInside;
 //      print(diffNameThanIsInside);
-      String headerIs = (diffNameThanIsInside?.isNotEmpty ?? false)
+      var headerIs = (diffNameThanIsInside.isNotEmpty ? true : false)
           ? diffNameThanIsInside
           : "isInside";
       var headerL = [headerX, headerY, headerIs];

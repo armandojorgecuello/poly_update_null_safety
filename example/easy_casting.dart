@@ -28,7 +28,7 @@ main() {
 
   //  Without casting `List<dynamic>` to `List<num>` `TypeError`is thrown as shown below :
   try {
-    List wrongDynamicList = [1, 2];
+    List<num> wrongDynamicList = [1, 2];
     var wrongPoint = toPoint(wrongDynamicList);
     print(wrongPoint.runtimeType);
   } on TypeError catch (e) {
@@ -41,7 +41,7 @@ main() {
   //    * type `int` is not a subtype of type `List<num>` in type cast
   try {
     List wrongDynamicList = [1, 2];
-    var wrongPoint = toListOfPoint(wrongDynamicList);
+    var wrongPoint = toListOfPoint(wrongDynamicList as List<List<num>>);
     print(wrongPoint.runtimeType);
   } on TypeError catch (e) {
     print(
