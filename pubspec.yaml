@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   csv: ^5.0.1
-  collection: ^1.16.0
+  collection: ^1.15.0
 #  spreadsheet_decoder: ^1.0.1
 #  json_serializable: ^2.1.0y
 #  path: ^1.4.1
